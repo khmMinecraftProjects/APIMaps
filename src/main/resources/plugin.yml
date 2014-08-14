@@ -1,0 +1,25 @@
+name: ${project.name}
+author: khmDEV
+main: ${project.groupId}.${project.artifactId}.init
+version: ${project.version}
+commands:
+   apim:
+      permission: apim.command
+      permission-message: No tienes permisos <permission>
+   apic:
+      permission: apic.command
+      permission-message: No tienes permisos <permission>
+permissions:
+         apim.command:
+                 default: op
+         apic.command:
+                 default: op
+         apim.BreakBlocks:
+                 default: op
+         apim.PlaceBlock:
+                 default: op
+         apim.Damange:
+                 default: op
+         apim.InteractBlock:
+                 default: op
+softdepend: [APIBase,APIAuxiliar]

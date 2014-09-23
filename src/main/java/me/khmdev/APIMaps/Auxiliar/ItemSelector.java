@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.khmdev.APIAuxiliar.Inventory.CustomInventorys.CustomItem;
-import me.khmdev.APIBase.Almacenes.LocAlmacen;
+import me.khmdev.APIBase.Almacenes.local.LocAlmacen;
 
 public class ItemSelector extends CustomItem {
 	public ItemSelector() {

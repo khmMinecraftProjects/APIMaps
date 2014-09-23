@@ -8,7 +8,7 @@ import me.khmdev.APIAuxiliar.Inventory.CustomInventorys.CItems;
 import me.khmdev.APIBase.Almacenes.Almacen;
 import me.khmdev.APIBase.Almacenes.Central;
 import me.khmdev.APIBase.Almacenes.Datos;
-import me.khmdev.APIBase.Almacenes.LocAlmacen;
+import me.khmdev.APIBase.Almacenes.local.LocAlmacen;
 import me.khmdev.APIBase.Auxiliar.Auxiliar;
 import me.khmdev.APIMaps.Auxiliar.ItemSelector;
 import me.khmdev.APIMaps.Auxiliar.Lee;
@@ -152,7 +152,7 @@ public class APIM implements Datos {
 			return true;
 		}
 		if (args[0].equalsIgnoreCase("get")) {
-			getIt(sender.getName());
+			getIt(sender);
 
 			return true;
 		}
@@ -201,7 +201,7 @@ public class APIM implements Datos {
 			return;
 		}
 
-		Player pl = getPluging().getServer().getPlayer(sender.getName());
+		Player pl = sender instanceof Player?(Player)sender:null;
 
 		Location a = LocAlmacen.cargar(pl, "LocA");
 
@@ -298,8 +298,8 @@ public class APIM implements Datos {
 		mapa.setZona(zona);
 
 		mapa.setName(name);
-		String id = (getPluging().getServer().getPlayer(sender.getName())
-				.getWorld().getName());
+		String id =sender instanceof Player?((Player)sender)
+				.getWorld().getName():null;
 		mapa.setWorld(id);
 
 		Lee run = new Lee(mapa, this, name, sender);
@@ -322,7 +322,7 @@ public class APIM implements Datos {
 			return;
 		}
 
-		Player pl = getPluging().getServer().getPlayer(sender.getName());
+		Player pl = sender instanceof Player?(Player)sender:null;
 
 		Location a = LocAlmacen.cargar(pl, "LocA");
 		Location b = LocAlmacen.cargar(pl, "LocB");
@@ -354,7 +354,7 @@ public class APIM implements Datos {
 			sender.sendMessage("Nivel de seguridad incorrecto");
 			return;
 		}
-		Player pl = getPluging().getServer().getPlayer(sender.getName());
+		Player pl = sender instanceof Player?(Player)sender:null;
 
 		Location a = LocAlmacen.cargar(pl, "LocA");
 		Location b = LocAlmacen.cargar(pl, "LocB");
@@ -431,10 +431,10 @@ public class APIM implements Datos {
 		cargaMapa(mapa, sender);
 	}
 
-	public void getIt(String user) {
-		if (user != "CONSOLE") {
-			Player player = getPluging().getServer().getPlayer(user);
-			player.getInventory().setItemInHand(selector.getItem());
+	public void getIt(CommandSender sender) {
+		if (sender.getName() != "CONSOLE") {
+			Player pl = sender instanceof Player?(Player)sender:null;
+			pl.getInventory().setItemInHand(selector.getItem());
 		}
 	}
 
@@ -461,7 +461,7 @@ public class APIM implements Datos {
 		byte d=(byte) 
 				Auxiliar.getNatural(Auxiliar.getSeparate(bl, 1,':'),0);
 
-		Player pl = getPluging().getServer().getPlayer(sender.getName());
+		Player pl = sender instanceof Player?(Player)sender:null;
 
 		Location a = LocAlmacen.cargar(pl, "LocA");
 		Location b = LocAlmacen.cargar(pl, "LocB");

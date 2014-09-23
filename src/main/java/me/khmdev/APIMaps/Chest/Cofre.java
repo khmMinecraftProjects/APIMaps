@@ -3,7 +3,7 @@ package me.khmdev.APIMaps.Chest;
 import me.khmdev.APIAuxiliar.Inventory.InventoryNBT;
 import me.khmdev.APIBase.Almacenes.Almacen;
 import me.khmdev.APIBase.Almacenes.Datos;
-import me.khmdev.APIBase.Almacenes.LocAlmacen;
+import me.khmdev.APIBase.Almacenes.local.LocAlmacen;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

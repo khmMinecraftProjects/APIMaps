@@ -49,7 +49,7 @@ public class init extends JavaPlugin{
 		return false;
 	}
 	public void onDisable() {
-		apim.onDisable();
+		if(apim!=null){apim.onDisable();}
 	}
 
 }
